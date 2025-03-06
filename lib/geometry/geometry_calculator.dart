@@ -1,26 +1,28 @@
-part of library;
+import 'dart:math';
+
+import 'line.dart';
 
 /// Geometry utilities class for point transformations and calculations.
-class GeometryUtils {
-  GeometryUtils._();
+class GeometryCalculator {
+  GeometryCalculator._();
 
   /// Calculates the mirror points of a given set of points relative to a specified line.
   ///
   /// - [points]: The set of points to be mirrored.
   /// - [line]: The line relative to which the points are mirrored.
   /// Returns: An iterable containing the mirrored points.
-  static Iterable<Point<double>> calculateMirrorPoints({
-    required Iterable<Point<double>> points,
+  static Iterable<Point<num>> calculateMirrorPoints({
+    required Iterable<Point<num>> points,
     required Line line,
   }) {
-    final double a = line.start.y - line.end.y;
-    final double b = -(line.start.x - line.end.x);
-    final double c = line.start.x * line.end.y - line.end.x * line.start.y;
+    final num a = line.start.y - line.end.y;
+    final num b = -(line.start.x - line.end.x);
+    final num c = line.start.x * line.end.y - line.end.x * line.start.y;
 
-    final double denominator = a * a + b * b;
+    final num denominator = a * a + b * b;
 
     return points.map((point) {
-      final double factor = -2 * (a * point.x + b * point.y + c) / denominator;
+      final num factor = -2 * (a * point.x + b * point.y + c) / denominator;
       return Point(
         factor * a + point.x,
         factor * b + point.y,

@@ -1,5 +1,3 @@
-part of library;
-
 extension DateTimeStringFormat on DateTime {
   String toFileFormat() {
     return "${year.toString().padLeft(2, '0')}"
