@@ -11,3 +11,12 @@ extension AsUint8List on List<int> {
     return (self is Uint8List) ? self : Uint8List.fromList(this);
   }
 }
+
+extension Uint8ListString on Uint8List {
+  Iterable<String> toByteStrings({bool upperCase = true}) sync* {
+    for (final byte in this) {
+      final hex = byte.toRadixString(16).padLeft(2, '0');
+      yield upperCase ? hex.toUpperCase() : hex;
+    }
+  }
+}

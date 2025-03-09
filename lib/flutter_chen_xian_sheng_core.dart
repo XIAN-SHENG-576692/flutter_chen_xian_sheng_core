@@ -1,5 +1,3 @@
-library flutter_chen_xian_sheng_core;
-
 export 'basic/bytes.dart';
 export 'basic/double.dart';
 export 'basic/string.dart';
